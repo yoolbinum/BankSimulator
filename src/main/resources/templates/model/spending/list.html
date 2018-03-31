@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/base :: head"></head>
+
+
+<body>
+
+<div id="wrapper">
+
+    <nav th:replace="common/base :: topNavbar"></nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div th:replace="common/base :: navBar"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Spending</h5>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-info " type="button" th:href="@{/spending/create}"><i class="fa fa-paste"></i>New Spending</a>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="spending : ${spendings}">
+                                    <td th:text="${spending.description}"></td>
+                                    <td th:text="${spending.amount}"></td>
+                                    <td><a th:href="@{/spending/update/{id}(id=${spending.id})}">Update</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="common/base :: foot"></div>
+    </div>
+</div>
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Peity -->
+<script src="js/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Peity -->
+<script src="js/demo/peity-demo.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+
+</body>
+
+</html>

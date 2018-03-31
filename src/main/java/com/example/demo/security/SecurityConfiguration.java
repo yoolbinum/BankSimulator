@@ -31,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String[] USER_MATCHERS = {
             "/profile/**",
+            "/spending/**"
     };
 
 

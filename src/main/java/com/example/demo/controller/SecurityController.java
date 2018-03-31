@@ -49,6 +49,7 @@ public class SecurityController {
         profile.setCredit_score(0);
         profile.setMonthly_income(new BigDecimal(0));
         profile.setMonthly_spent(new BigDecimal(0));
+        profile.setAvailable_credit(new BigDecimal(0));
         user.setProfile(profile);
         userService.saveNewUser(user);
         return "redirect:/login";

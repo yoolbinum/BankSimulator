@@ -20,6 +20,8 @@ public class Profile {
 
     private BigDecimal monthly_spent;
 
+    private BigDecimal available_credit;
+
     public Profile() {
     }
 
@@ -69,5 +71,13 @@ public class Profile {
 
     public void setMonthly_spent(BigDecimal monthly_spent) {
         this.monthly_spent = monthly_spent;
+    }
+
+    public BigDecimal getAvailable_credit() {
+        return available_credit;
+    }
+
+    public void setAvailable_credit(BigDecimal available_credit) {
+        this.available_credit = available_credit;
     }
 }

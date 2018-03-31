@@ -21,9 +21,16 @@ public class AppUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<Spending> spendings;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id")
     private Profile profile;
+
+    public AppUser() {
+        spendings = new HashSet<>();
+    }
 
     public long getId() {
         return id;
@@ -85,5 +92,18 @@ public class AppUser {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public Set<Spending> getSpendings() {
+        return spendings;
+    }
+
+    public void setSpendings(Set<Spending> spendings) {
+        this.spendings = spendings;
+    }
+
+    public void addSpending(Spending spending)
+    {
+        this.spendings.add(spending);
     }
 }

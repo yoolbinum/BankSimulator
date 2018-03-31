@@ -17,26 +17,35 @@
                 <div class="col-lg-4">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
+                            <span class="label label-warning pull-right"></span>
+                            <h5>Credit Score</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins" th:text="${profile.credit_score}"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
                             <span class="label label-success pull-right">Monthly</span>
                             <h5>Income</h5>
                         </div>
                         <div class="ibox-content">
                             <h1 class="no-margins" th:text="${profile.monthly_income}"></h1>
-                            <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                            <small>Total income</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-warning pull-right">Monthly</span>
+                            <span class="label label-success pull-right">Monthly</span>
                             <h5>Spending</h5>
                         </div>
                         <div class="ibox-content">
                             <h1 class="no-margins" th:text="${profile.monthly_spent}"></h1>
-                            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                            <small>Total spending</small>
                         </div>
                     </div>
                 </div>
@@ -50,8 +59,6 @@
                         </div>
                         <div class="ibox-content">
                             <h1 class="no-margins" th:text="${profile.credit_line}"></h1>
-                            <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
-                            <small>New orders</small>
                         </div>
                     </div>
                 </div>
@@ -62,9 +69,7 @@
                             <h5>Available Credit</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins" th:text="${profile.credit_line}"></h1>
-                            <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
-                            <small>New orders</small>
+                            <h1 class="no-margins" th:text="${profile.available_credit}"></h1>
                         </div>
                     </div>
                 </div>
