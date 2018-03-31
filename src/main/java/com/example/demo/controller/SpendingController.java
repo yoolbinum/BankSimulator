@@ -27,6 +27,8 @@ public class SpendingController {
     @RequestMapping("/list")
     public String getList(Model model, Authentication auth){
         AppUser user = userService.findByUsername(auth.getName());
+
+
         model.addAttribute("user", user);
         model.addAttribute("spendings",user.getSpendings());
         return spendingDir + "list";

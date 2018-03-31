@@ -24,6 +24,7 @@ public class ProfileController {
     @RequestMapping("/detail")
     public String getProfile(   Model model, Authentication auth){
         AppUser user = userService.findByUsername(auth.getName());
+        userService.updateCreditScore(user);
         model.addAttribute("user", user);
         model.addAttribute("profile", user.getProfile());
         return profileDir + "detail";

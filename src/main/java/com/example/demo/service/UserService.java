@@ -38,38 +38,45 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void saveUser(AppUser user){
+    public void saveUser(AppUser user) {
         userRepository.save(user);
     }
 
-    public void addRole(AppUser user, String roleName){
+    public void addRole(AppUser user, String roleName) {
         Role role = roleRepository.findByRole(roleName);
         user.addRole(role);
     }
 
-    public void addSpending(AppUser user, Spending spending){
+    public void addSpending(AppUser user, Spending spending) {
         user.addSpending(spending);
         saveUser(user);
         saveSpending(spending);
     }
 
-    public void saveSpending(Spending spending){
+    public void saveSpending(Spending spending) {
         spendingRepository.save(spending);
     }
 
-    public Spending findSpendingBySpendingId(long id){
+    public Spending findSpendingBySpendingId(long id) {
         return spendingRepository.findOne(id);
     }
 
-    public void addMonthlySpent(AppUser user, BigDecimal spent){
+    public void addMonthlySpent(AppUser user, BigDecimal spent) {
         BigDecimal total = user.getProfile().getMonthly_spent().add(spent);
         user.getProfile().setMonthly_spent(total);
         saveUser(user);
     }
 
-    public void updateAvailableCredit(AppUser user){
+    public void updateAvailableCredit(AppUser user) {
         BigDecimal credit = user.getProfile().getCredit_line().subtract(user.getProfile().getMonthly_spent());
         user.getProfile().setAvailable_credit(credit);
+        saveUser(user);
+    }
+
+    public void updateCreditScore(AppUser user) {
+        BigDecimal remainder = (user.getProfile().getAvailable_credit().divide(new BigDecimal(100)));
+        double score = 750 - (user.getSpendings().size() *  5) - (remainder.intValue() * 5) ;
+        user.getProfile().setCredit_score((int) score);
         saveUser(user);
     }
 
