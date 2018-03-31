@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+
+<body>
+<div id="wrapper">
+
+    <nav th:replace="common/base :: topNavbar"></nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div th:replace="common/base :: navBar"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center m-t-lg">
+                        <h1>
+                            Welcome in
+                        </h1>
+                        <small>
+                            Bank Simulator is for student who need to learn how to manage their budge.
+                        </small>
+                        <h3 sec:authorize="!hasAnyAuthority('INSTRUCTOR', 'STUDENT')">
+                            You have not <strong>LOGGED IN</strong>
+                        </h3>
+
+                        <h3 sec:authorize="hasAuthority('STUDENT')">
+                            You are an <strong>STUDENT</strong>
+                        </h3>
+                        <h3 sec:authorize="hasAuthority('INSTRUCTOR')">
+                            You are an <strong>INSTRUCTOR</strong>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="common/base :: foot"></div>
+
+    </div>
+</div>
+
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>

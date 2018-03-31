@@ -21,6 +21,10 @@ public class AppUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+
     public long getId() {
         return id;
     }
@@ -70,4 +74,16 @@ public class AppUser {
         this.roles = roles;
     }
 
+    public void addRole(Role role)
+    {
+        this.roles.add(role);
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 }

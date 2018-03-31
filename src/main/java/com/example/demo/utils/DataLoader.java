@@ -14,11 +14,8 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception{
         Role r = new Role();
-        r.setRole("STUDENT");
+        r.setRole("USER");
         roleRepository.save(r);
 
-        r = new Role();
-        r.setRole("INSTRUCTOR");
-        roleRepository.save(r);
     }
 }

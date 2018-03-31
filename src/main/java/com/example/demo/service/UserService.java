@@ -26,22 +26,20 @@ public class UserService {
         return userRepository.findUserByUsername(username);
     }
 
-    public void saveNewInstructor(AppUser user) {
+    public void saveNewUser(AppUser user) {
         HashSet<Role> hash = new HashSet<>();
-        hash.add(roleRepository.findByRole("INSTRUCTOR"));
-        user.setRoles(hash);
-        userRepository.save(user);
-    }
-
-    public void saveNewStudent(AppUser user) {
-        HashSet<Role> hash = new HashSet<>();
-        hash.add(roleRepository.findByRole("STUDENT"));
+        hash.add(roleRepository.findByRole("USER"));
         user.setRoles(hash);
         userRepository.save(user);
     }
 
     public void saveUser(AppUser user){
         userRepository.save(user);
+    }
+
+    public void addRole(AppUser user, String roleName){
+        Role role = roleRepository.findByRole(roleName);
+        user.addRole(role);
     }
 
 

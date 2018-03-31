@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/base :: head"></head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">BS</h1>
+
+        </div>
+        <h3>Welcome to Bank Simulator</h3>
+        <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+        </p>
+        <p>Login in. To see it in action.</p>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+
+        <form class="m-t" role="form" th:action="@{/login}" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" name="username"  required=""/>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" name="password" required=""/>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+            <p class="text-muted text-center"><small>Do not have an account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" th:href="@{/register}">Create an account</a>
+        </form>
+    </div>
+</div>
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>
